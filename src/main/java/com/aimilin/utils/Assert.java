@@ -132,10 +132,10 @@ public abstract class Assert {
 	 * <pre class="code">Assert.hasLength(name, "Name must not be empty");</pre>
 	 * @param text the String to check
 	 * @param message the exception message to use if the assertion fails
-	 * @see StringUtils#hasLength
+	 * @see StringUtil#hasLength
 	 */
 	public static void hasLength(String text, String message) {
-		if (!StringUtils.hasLength(text)) {
+		if (!StringUtil.hasLength(text)) {
 			throw new IllegalArgumentException(message);
 		}
 	}
@@ -145,7 +145,7 @@ public abstract class Assert {
 	 * it must not be <code>null</code> and not the empty String.
 	 * <pre class="code">Assert.hasLength(name);</pre>
 	 * @param text the String to check
-	 * @see StringUtils#hasLength
+	 * @see StringUtil#hasLength
 	 */
 	public static void hasLength(String text) {
 		hasLength(text, "[Assertion failed] - this String argument must have length; it must not be null or empty");
@@ -157,10 +157,10 @@ public abstract class Assert {
 	 * <pre class="code">Assert.hasText(name, "'name' must not be empty");</pre>
 	 * @param text the String to check
 	 * @param message the exception message to use if the assertion fails
-	 * @see StringUtils#hasText
+	 * @see StringUtil#hasText
 	 */
 	public static void hasText(String text, String message) {
-		if (!StringUtils.hasText(text)) {
+		if (!StringUtil.hasText(text)) {
 			throw new IllegalArgumentException(message);
 		}
 	}
@@ -170,7 +170,7 @@ public abstract class Assert {
 	 * be <code>null</code> and must contain at least one non-whitespace character.
 	 * <pre class="code">Assert.hasText(name, "'name' must not be empty");</pre>
 	 * @param text the String to check
-	 * @see StringUtils#hasText
+	 * @see StringUtil#hasText
 	 */
 	public static void hasText(String text) {
 		hasText(text, "[Assertion failed] - this String argument must have text; it must not be null, empty, or blank");
@@ -184,7 +184,7 @@ public abstract class Assert {
 	 * @param message the exception message to use if the assertion fails
 	 */
 	public static void doesNotContain(String textToSearch, String substring, String message) {
-		if (StringUtils.hasLength(textToSearch) && StringUtils.hasLength(substring)
+		if (StringUtil.hasLength(textToSearch) && StringUtil.hasLength(substring)
 				&& textToSearch.indexOf(substring) != -1) {
 			throw new IllegalArgumentException(message);
 		}
