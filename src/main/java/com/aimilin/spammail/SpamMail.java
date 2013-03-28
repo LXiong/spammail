@@ -13,6 +13,7 @@ import com.aimilin.frame.MainFrame;
  */
 public class SpamMail {
 	private static final Logger logger = Logger.getLogger(SpamMail.class);
+	public static MainFrame mainFrame = null;
 
 	public static void main(String[] args) {
 		try {
@@ -23,8 +24,8 @@ public class SpamMail {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				MainFrame frame = new MainFrame();
-				frame.setVisible(true);
+				mainFrame = new MainFrame();
+				mainFrame.setVisible(true);
 			}
 		});
 	}
