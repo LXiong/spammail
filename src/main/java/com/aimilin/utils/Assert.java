@@ -21,6 +21,8 @@ import java.util.Map;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.MapUtils;
+import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
 
 /**
  * Assertion utility class that assists in validating arguments.
@@ -127,31 +129,6 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Assert that the given String is not empty; that is,
-	 * it must not be <code>null</code> and not the empty String.
-	 * <pre class="code">Assert.hasLength(name, "Name must not be empty");</pre>
-	 * @param text the String to check
-	 * @param message the exception message to use if the assertion fails
-	 * @see StringUtil#hasLength
-	 */
-	public static void hasLength(String text, String message) {
-		if (!StringUtil.hasLength(text)) {
-			throw new IllegalArgumentException(message);
-		}
-	}
-
-	/**
-	 * Assert that the given String is not empty; that is,
-	 * it must not be <code>null</code> and not the empty String.
-	 * <pre class="code">Assert.hasLength(name);</pre>
-	 * @param text the String to check
-	 * @see StringUtil#hasLength
-	 */
-	public static void hasLength(String text) {
-		hasLength(text, "[Assertion failed] - this String argument must have length; it must not be null or empty");
-	}
-
-	/**
 	 * Assert that the given String has valid text content; that is, it must not
 	 * be <code>null</code> and must contain at least one non-whitespace character.
 	 * <pre class="code">Assert.hasText(name, "'name' must not be empty");</pre>
@@ -160,7 +137,7 @@ public abstract class Assert {
 	 * @see StringUtil#hasText
 	 */
 	public static void hasText(String text, String message) {
-		if (!StringUtil.hasText(text)) {
+		if (StringUtils.isBlank(text)) {
 			throw new IllegalArgumentException(message);
 		}
 	}
@@ -177,31 +154,6 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Assert that the given text does not contain the given substring.
-	 * <pre class="code">Assert.doesNotContain(name, "rod", "Name must not contain 'rod'");</pre>
-	 * @param textToSearch the text to search
-	 * @param substring the substring to find within the text
-	 * @param message the exception message to use if the assertion fails
-	 */
-	public static void doesNotContain(String textToSearch, String substring, String message) {
-		if (StringUtil.hasLength(textToSearch) && StringUtil.hasLength(substring)
-				&& textToSearch.indexOf(substring) != -1) {
-			throw new IllegalArgumentException(message);
-		}
-	}
-
-	/**
-	 * Assert that the given text does not contain the given substring.
-	 * <pre class="code">Assert.doesNotContain(name, "rod");</pre>
-	 * @param textToSearch the text to search
-	 * @param substring the substring to find within the text
-	 */
-	public static void doesNotContain(String textToSearch, String substring) {
-		doesNotContain(textToSearch, substring,
-				"[Assertion failed] - this String argument must not contain the substring [" + substring + "]");
-	}
-
-	/**
 	 * Assert that an array has elements; that is, it must not be
 	 * <code>null</code> and must have at least one element.
 	 * <pre class="code">Assert.notEmpty(array, "The array must have elements");</pre>
@@ -210,7 +162,7 @@ public abstract class Assert {
 	 * @throws IllegalArgumentException if the object array is <code>null</code> or has no elements
 	 */
 	public static void notEmpty(Object[] array, String message) {
-		if (ObjectUtils.isEmpty(array)) {
+		if (ArrayUtils.isEmpty(array)) {
 			throw new IllegalArgumentException(message);
 		}
 	}

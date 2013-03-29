@@ -1,6 +1,5 @@
 package com.aimilin.utils;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
@@ -9,6 +8,8 @@ import org.apache.commons.lang3.StringUtils;
  * 数据有效性检验工具类
  */
 public class CheckUtils {
+	private static Pattern pattern = Pattern
+			.compile("^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$");
 
 	/**
 	 * 检验email地址是否合法，如果合法则返回true，否则返回false
@@ -20,9 +21,6 @@ public class CheckUtils {
 	public static boolean isEmailAdress(String emailAddress) {
 		if (StringUtils.isEmpty(emailAddress))
 			throw new IllegalArgumentException("The emailAddress must be not  null or empty!");
-		Pattern pattern = Pattern
-				.compile("^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$");
-		Matcher matcher = pattern.matcher(emailAddress);
-		return matcher.matches();
+		return pattern.matcher(emailAddress).matches();
 	}
 }

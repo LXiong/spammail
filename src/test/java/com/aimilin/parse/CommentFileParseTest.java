@@ -11,14 +11,15 @@ import org.junit.Test;
  * @author LiuJunGuang
  * @date 2013-3-28下午9:10:45
  */
-public class FileParseTest {
+public class CommentFileParseTest {
 
 	@Test
 	public void testPraseFileName() throws IOException {
-		FileParse parse = new FileParse();
-		String path = FileParseTest.class.getClassLoader().getResource("conf.properties").getPath();
+		CommentFileParse parse = new CommentFileParse();
+		String path = CommentFileParseTest.class.getClassLoader().getResource("conf.properties").getPath();
 		System.out.println(path);
-		print(parse.parse(path));
+		parse.parse(path);
+		print(parse.getLines());
 	}
 
 	private void print(List<String> strList) {
