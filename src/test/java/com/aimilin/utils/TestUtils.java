@@ -11,10 +11,11 @@ import org.apache.commons.collections.CollectionUtils;
  */
 public class TestUtils {
 
-	public static void print(List<String> strList) {
+	public static void print(List<?> strList) {
 		if (CollectionUtils.isEmpty(strList))
 			return;
-		for (String str : strList) {
+		for (Object str : strList) {
+			str = str == null ? "" : str.toString();
 			System.out.println(str);
 		}
 	}

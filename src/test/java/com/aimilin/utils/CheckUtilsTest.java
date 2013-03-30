@@ -11,7 +11,7 @@ import org.junit.Test;
 public class CheckUtilsTest {
 
 	@Test
-	public void test() throws IllegalArgumentException {
+	public void testEmailAdress() throws IllegalArgumentException {
 		Assert.assertTrue(CheckUtils.isEmailAdress("javamail111@163.com"));
 		Assert.assertTrue(CheckUtils.isEmailAdress("javamail111@yeah.com"));
 		Assert.assertTrue(CheckUtils.isEmailAdress("javamail111@sina.com"));
@@ -26,6 +26,14 @@ public class CheckUtilsTest {
 		Assert.assertTrue(CheckUtils.isEmailAdress(null));
 		Assert.assertTrue(CheckUtils.isEmailAdress(""));
 		Assert.assertTrue(CheckUtils.isEmailAdress("  "));
+	}
+
+	@Test
+	public void testGetSMTPServer() {
+		Assert.assertEquals("smtp.yeah.net", CheckUtils.getSMTPServer("aaa@yeah.net"));
+		Assert.assertEquals("smtp.yeah.net", CheckUtils.getSMTPServer("aaa@yeah.NET"));
+		Assert.assertEquals("smtp.yeah.net", CheckUtils.getSMTPServer("aaa@yeaH.net"));
+		Assert.assertEquals("smtp.yeah.net", CheckUtils.getSMTPServer("bbbb@yeah.net"));
 	}
 
 }

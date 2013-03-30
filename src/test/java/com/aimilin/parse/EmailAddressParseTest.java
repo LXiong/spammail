@@ -17,7 +17,7 @@ public class EmailAddressParseTest {
 	public void testParseString() throws IOException {
 		EmailAddressParse parse = new EmailAddressParse();
 		parse.setIgnoreErrorEmail(true);
-		parse.parse("D:\\workspace\\java\\spammail\\文档\\要发送的邮件地址.txt");
+		parse.parse("D:\\workspace\\java\\spammail\\文档\\收件人.txt");
 		TestUtils.print(parse.getEmails());
 	}
 }
