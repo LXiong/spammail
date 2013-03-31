@@ -136,7 +136,7 @@ public abstract class Assert {
 	 * @param message the exception message to use if the assertion fails
 	 * @see StringUtil#hasText
 	 */
-	public static void hasText(String text, String message) {
+	public static void notBlank(String text, String message) {
 		if (StringUtils.isBlank(text)) {
 			throw new IllegalArgumentException(message);
 		}
@@ -149,8 +149,8 @@ public abstract class Assert {
 	 * @param text the String to check
 	 * @see StringUtil#hasText
 	 */
-	public static void hasText(String text) {
-		hasText(text, "[Assertion failed] - this String argument must have text; it must not be null, empty, or blank");
+	public static void notBlank(String text) {
+		notBlank(text, "[Assertion failed] - this String argument must have text; it must not be null, empty, or blank");
 	}
 
 	/**
