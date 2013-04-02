@@ -2,6 +2,7 @@ package com.aimilin.domain;
 
 /**
  * email账户信息
+ * 
  * @author LiuJunGuang
  * @date 2013-3-30下午9:30:58
  */
@@ -21,6 +22,7 @@ public class EmailAccount {
 
 	/**
 	 * 初始化用户邮件账户
+	 * 
 	 * @param email 邮件账户
 	 * @param password 密码
 	 */
@@ -32,8 +34,9 @@ public class EmailAccount {
 
 	/**
 	 * 获取邮件账户
+	 * 
 	 * @author LiuJunGuang
-	 * @return String 
+	 * @return String
 	 * @date 2013-3-30下午9:33:40
 	 */
 	public String getEmail() {
@@ -42,6 +45,7 @@ public class EmailAccount {
 
 	/**
 	 * 获取密码
+	 * 
 	 * @author LiuJunGuang
 	 * @return String
 	 * @date 2013-3-30下午9:33:41
@@ -52,6 +56,7 @@ public class EmailAccount {
 
 	/**
 	 * 设置邮件地址
+	 * 
 	 * @author LiuJunGuang
 	 * @param email
 	 * @date 2013-3-30下午9:33:43
@@ -62,6 +67,7 @@ public class EmailAccount {
 
 	/**
 	 * 设置密码
+	 * 
 	 * @author LiuJunGuang
 	 * @param password
 	 * @date 2013-3-30下午9:33:44
