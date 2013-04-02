@@ -1,7 +1,9 @@
 package com.aimilin.utils;
 
+import java.awt.event.ActionListener;
 import java.io.File;
 
+import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -64,5 +66,27 @@ public class FrameUtils {
 			return path;
 		}
 		return null;
+	}
+
+	/**
+	 * 创建按钮
+	 * @author LiuJunGuang
+	 * @param name 按钮上显示的字符串
+	 * @param showText 是否显示文字，ture 显示，false不显示
+	 * @param iconName icon名称
+	 * @param showIcon 是否显示图标，true显示，false不显示
+	 * @return JButton
+	 * @date 2013-4-2下午9:53:24
+	 */
+	public static JButton createButton(String name, boolean showText, String iconName, boolean showIcon,
+			ActionListener al) {
+		JButton bt = new JButton();
+		bt.addActionListener(al);
+		bt.setToolTipText(name);
+		if (showText)
+			bt.setText(name);
+		if (showIcon)
+			bt.setIcon(ImageUtils.loadImage(iconName));
+		return bt;
 	}
 }
