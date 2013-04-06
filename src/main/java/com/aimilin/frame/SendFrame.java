@@ -1,6 +1,7 @@
 package com.aimilin.frame;
 
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -64,8 +65,9 @@ public class SendFrame extends JPanel {
 	 * @date 2013-4-1下午9:19:53
 	 */
 	private JPanel initStatePanel() {
-		JPanel statePanel = new JPanel();
-		return statePanel;
+		JPanel statusPanel = new JPanel(new GridLayout(1, 1));
+		statusPanel.add(contentPanel.getCaretListenerLabel());
+		return statusPanel;
 	}
 
 	public static void main(String[] args) {

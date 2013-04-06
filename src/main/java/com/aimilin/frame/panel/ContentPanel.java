@@ -14,11 +14,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.JToolBar;
 import javax.swing.text.html.HTMLDocument;
-import javax.swing.text.html.HTMLEditorKit;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.aimilin.action.CaretListenerLabel;
 import com.aimilin.action.ContentToolBarEvent;
+import com.aimilin.action.MyDocumentListener;
+import com.aimilin.action.MyUndoableEditListener;
 import com.aimilin.domain.ContentToolBarBean;
 import com.aimilin.utils.FrameUtils;
 import com.aimilin.utils.ImageUtils;
@@ -32,10 +34,12 @@ public class ContentPanel extends BasePanel implements Serializable {
 	private static final long serialVersionUID = 2396848127573872426L;
 	private ContentToolBarBean toolBarBean = null;
 	private ContentToolBarEvent toolBarEvent = null;
+	private CaretListenerLabel caretListenerLabel;// 状态条
 
 	public ContentPanel() {
 		toolBarBean = new ContentToolBarBean();
 		toolBarEvent = new ContentToolBarEvent(toolBarBean);
+		caretListenerLabel = new CaretListenerLabel();
 	}
 
 	// 初始化编辑面板
@@ -119,14 +123,15 @@ public class ContentPanel extends BasePanel implements Serializable {
 	// 初始化内容滚动面板
 	private JScrollPane createContentScrollPane() {
 		JTextPane contentTp = new JTextPane();
+		contentTp.setContentType("text/html; charset=UTF-8");
 		contentTp.setCaretPosition(0);
 		contentTp.setMargin(new Insets(5, 5, 5, 5));
+		HTMLDocument htmlDoc = new HTMLDocument();
+		htmlDoc.addUndoableEditListener(new MyUndoableEditListener());
+		htmlDoc.addDocumentListener(new MyDocumentListener());
+		contentTp.setStyledDocument(htmlDoc);
+		contentTp.addCaretListener(caretListenerLabel);
 
-		HTMLDocument html = new HTMLDocument();
-		HTMLEditorKit editorKit = new HTMLEditorKit();
-		contentTp.setStyledDocument(html);
-		contentTp.setContentType("text/html; charset=UTF-8");
-		contentTp.setEditorKit(editorKit);
 		JScrollPane scrollPane = new JScrollPane(contentTp);
 		scrollPane.setPreferredSize(new Dimension(400, 400));
 		toolBarBean.setContentTp(contentTp);
@@ -151,13 +156,13 @@ public class ContentPanel extends BasePanel implements Serializable {
 	}
 
 	/**
-	 * 设置工具条和编辑区bean
+	 * 获取文本编辑状态
 	 * @author LiuJunGuang
-	 * @param toolBarBean
-	 * @date 2013-4-6下午12:27:27
+	 * @return
+	 * @date 2013-4-6下午9:47:53
 	 */
-	public void setToolBarBean(ContentToolBarBean toolBarBean) {
-		this.toolBarBean = toolBarBean;
+	public CaretListenerLabel getCaretListenerLabel() {
+		return caretListenerLabel;
 	}
 
 }
