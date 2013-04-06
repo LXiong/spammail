@@ -16,13 +16,10 @@ import javax.swing.JToolBar;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
 
-import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
 
 import com.aimilin.action.ContentToolBarEvent;
 import com.aimilin.domain.ContentToolBarBean;
-import com.aimilin.utils.ConfigUtils;
 import com.aimilin.utils.FrameUtils;
 import com.aimilin.utils.ImageUtils;
 
@@ -31,10 +28,8 @@ import com.aimilin.utils.ImageUtils;
  * @author LiuJunGuang
  * @date 2013-4-2下午10:30:36
  */
-public class ContentPanel implements Serializable {
-	private Logger log = Logger.getLogger(ContentPanel.class);
+public class ContentPanel extends BasePanel implements Serializable {
 	private static final long serialVersionUID = 2396848127573872426L;
-	private ConfigUtils conf = ConfigUtils.getInstance();
 	private ContentToolBarBean toolBarBean = null;
 	private ContentToolBarEvent toolBarEvent = null;
 
@@ -64,40 +59,18 @@ public class ContentPanel implements Serializable {
 				{ "boldBt", "content.toolbar.bold", "加粗", "text_bold.png" },
 				{ "italicBt", "content.toolbar.italic", "斜体", "text_italic.png" },
 				{ "underlineBt", "content.toolbar.underline", "下划线", "text_underline.png" },
-				{ "separator" },
+				{ this.SEPARATOR },
 				{ "fontColorBt", "content.toolbar.font_color", "字体颜色", "text_font_color.png" },
 				{ "fontBackgroundColorBt", "content.toolbar.font_background_color", "背景颜色", "text_background_color.png" },
-				{ "separator" }, { "leftBt", "content.toolbar.left", "居左", "text_align_left.png" },
+				{ this.SEPARATOR }, { "leftBt", "content.toolbar.left", "居左", "text_align_left.png" },
 				{ "centerBt", "content.toolbar.center", "居中", "text_align_center.png" },
-				{ "rightBt", "content.toolbar.right", "居右", "text_align_right.png" }, { "separator" },
+				{ "rightBt", "content.toolbar.right", "居右", "text_align_right.png" }, { this.SEPARATOR },
 				{ "unorderListBt", "content.toolbar.unorder_list", "无序列表", "text_unorder_list.png" },
-				{ "orderListBt", "content.toolbar.order_list", "有序列表", "text_order_list.png" }, { "separator" },
+				{ "orderListBt", "content.toolbar.order_list", "有序列表", "text_order_list.png" }, { this.SEPARATOR },
 				{ "linkBt", "content.toolbar.link", "超链接", "text_link.png" } };
-		initToolBarButton(toolBar, buttonArray);// 初始化toolbar按钮
+		this.initButton(toolBarBean, toolBar, buttonArray);// 初始化toolbar按钮
 		panel.add(toolBar);
 		return panel;
-	}
-
-	/**
-	 * 初始化工具条按钮
-	 * @author LiuJunGuang
-	 * @param buttonArray
-	 * @date 2013-4-6下午1:49:08
-	 */
-	private void initToolBarButton(JToolBar toolBar, String[][] buttonArray) {
-		for (String[] strs : buttonArray) {
-			try {
-				if ("separator".equals(strs[0])) {
-					toolBar.addSeparator();
-					continue;
-				}
-				JButton button = createTextButton(conf.getString(strs[1], strs[2]), strs[3]);
-				toolBar.add(button);
-				BeanUtils.setProperty(toolBarBean, strs[0], button);
-			} catch (Exception e) {
-				log.error(e);
-			}
-		}
 	}
 
 	// 字号大小
@@ -160,7 +133,8 @@ public class ContentPanel implements Serializable {
 		return scrollPane;
 	}
 
-	private JButton createTextButton(String buttonName, String iconName) {
+	@Override
+	public JButton createButton(String buttonName, String iconName) {
 		boolean showText = conf.getBoolean("content.toolbar.show_text", true);
 		boolean showIcon = conf.getBoolean("content.toolbar.show_icon", true) && StringUtils.isNotEmpty(iconName);
 		return FrameUtils.createButton(buttonName, showText, iconName, showIcon, toolBarEvent);

@@ -8,6 +8,7 @@ import javax.swing.JToolBar;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.aimilin.domain.ToolBarBean;
 import com.aimilin.utils.ConfigUtils;
 import com.aimilin.utils.FrameUtils;
 
@@ -16,14 +17,14 @@ import com.aimilin.utils.FrameUtils;
  * @author LiuJunGuang
  * @date 2013-4-2下午10:55:49
  */
-public class ToolBarPanel implements ActionListener {
+public class ToolBarPanel extends BasePanel implements ActionListener {
 	private ConfigUtils conf = ConfigUtils.getInstance();
-	private JButton sendBt = null;// 发送
-	private JButton saveBt = null;// 保存
-	private JButton importBt = null;// 保存
-	private JButton copyToBt = null;// 添加抄送人
-	private JButton secretToBt = null;// 添加密送人
-	private JButton attachBt = null;// 添加附件
+	private ToolBarBean toolBarBean;
+
+	public ToolBarPanel() {
+		super();
+		toolBarBean = new ToolBarBean();
+	}
 
 	/**
 	 * 初始化工具条
@@ -32,25 +33,19 @@ public class ToolBarPanel implements ActionListener {
 	 */
 	public JToolBar initToolBar() {
 		JToolBar toolBar = new JToolBar();
-		sendBt = createMenuButton(conf.getString("sendFrame.button.send", "发送"), "send_email.png");
-		toolBar.add(sendBt);
-		toolBar.addSeparator();
-		saveBt = createMenuButton(conf.getString("sendFrame.button.save", "保存"), "save.png");
-		toolBar.add(saveBt);
-		importBt = createMenuButton(conf.getString("sendFrame.button.import", "导入"), "import.png");
-		toolBar.add(importBt);
-		toolBar.addSeparator();
-		copyToBt = createMenuButton(conf.getString("sendFrame.button.copyTo", "添加抄送"), "user.png");
-		toolBar.add(copyToBt);
-		secretToBt = createMenuButton(conf.getString("sendFrame.button.secretTo", "添加密送"), "user_red.png");
-		toolBar.add(secretToBt);
-		attachBt = createMenuButton(conf.getString("sendFrame.button.attach", "添加附件"), "attach.png");
-		toolBar.add(attachBt);
+		String[][] buttonArray = { { "sendBt", "sendFrame.button.send", "发送", "send_email.png" }, { this.SEPARATOR },
+				{ "saveBt", "sendFrame.button.save", "保存", "save.png" },
+				{ "importBt", "sendFrame.button.import", "导入", "import.png" }, { this.SEPARATOR },
+				{ "copyToBt", "sendFrame.button.copyTo", "添加抄送", "user.png" },
+				{ "secretToBt", "sendFrame.button.secretTo", "添加密送", "user_red.png" }, { this.SEPARATOR },
+				{ "attachBt", "sendFrame.button.attach", "添加附件", "attach.png" }, };
+		this.initButton(toolBarBean, toolBar, buttonArray);
 		return toolBar;
 	}
 
 	// 创建按钮
-	private JButton createMenuButton(String name, String iconName) {
+	@Override
+	public JButton createButton(String name, String iconName) {
 		boolean showText = conf.getBoolean("window.toolbar.show_text", true);
 		boolean showIcon = conf.getBoolean("window.toolbar.show_icon", true) && StringUtils.isNotEmpty(iconName);
 		return FrameUtils.createButton(name, showText, iconName, showIcon, this);
@@ -60,4 +55,13 @@ public class ToolBarPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 	}
+
+	public ToolBarBean getToolBarBean() {
+		return toolBarBean;
+	}
+
+	public void setToolBarBean(ToolBarBean toolBarBean) {
+		this.toolBarBean = toolBarBean;
+	}
+
 }
