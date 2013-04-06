@@ -14,6 +14,10 @@ public class ConfigUtils extends PropertiesConfiguration implements Configuratio
 	private static Logger log = Logger.getLogger(ConfigUtils.class);
 	private static ConfigUtils conf = null;
 
+	private ConfigUtils() {
+
+	}
+
 	private ConfigUtils(String fileName) throws ConfigurationException {
 		super(fileName);
 	}
