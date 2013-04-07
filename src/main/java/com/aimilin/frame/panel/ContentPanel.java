@@ -19,8 +19,8 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.aimilin.action.CaretListenerLabel;
 import com.aimilin.action.ContentToolBarEvent;
+import com.aimilin.action.EditorPopupMenu;
 import com.aimilin.action.MyDocumentListener;
-import com.aimilin.action.MyUndoableEditListener;
 import com.aimilin.domain.ContentToolBarBean;
 import com.aimilin.utils.FrameUtils;
 import com.aimilin.utils.ImageUtils;
@@ -35,11 +35,13 @@ public class ContentPanel extends BasePanel implements Serializable {
 	private ContentToolBarBean toolBarBean = null;
 	private ContentToolBarEvent toolBarEvent = null;
 	private CaretListenerLabel caretListenerLabel;// 状态条
+	private EditorPopupMenu popupMenu;// 右键菜单
 
 	public ContentPanel() {
 		toolBarBean = new ContentToolBarBean();
 		toolBarEvent = new ContentToolBarEvent(toolBarBean);
 		caretListenerLabel = new CaretListenerLabel();
+		popupMenu = new EditorPopupMenu();
 	}
 
 	// 初始化编辑面板
@@ -127,11 +129,11 @@ public class ContentPanel extends BasePanel implements Serializable {
 		contentTp.setCaretPosition(0);
 		contentTp.setMargin(new Insets(5, 5, 5, 5));
 		HTMLDocument htmlDoc = new HTMLDocument();
-		htmlDoc.addUndoableEditListener(new MyUndoableEditListener());
+		htmlDoc.addUndoableEditListener(popupMenu);
 		htmlDoc.addDocumentListener(new MyDocumentListener());
 		contentTp.setStyledDocument(htmlDoc);
 		contentTp.addCaretListener(caretListenerLabel);
-
+		contentTp.addMouseListener(popupMenu);
 		JScrollPane scrollPane = new JScrollPane(contentTp);
 		scrollPane.setPreferredSize(new Dimension(400, 400));
 		toolBarBean.setContentTp(contentTp);
