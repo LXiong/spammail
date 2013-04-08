@@ -25,42 +25,46 @@ import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 
 /**
- * Assertion utility class that assists in validating arguments.
- * Useful for identifying programmer errors early and clearly at runtime.
- *
- * <p>For example, if the contract of a public method states it does not
- * allow <code>null</code> arguments, Assert can be used to validate that
- * contract. Doing this clearly indicates a contract violation when it
- * occurs and protects the class's invariants.
- *
- * <p>Typically used to validate method arguments rather than configuration
- * properties, to check for cases that are usually programmer errors rather than
- * configuration errors. In contrast to config initialization code, there is
- * usally no point in falling back to defaults in such methods.
- *
- * <p>This class is similar to JUnit's assertion library. If an argument value is
- * deemed invalid, an {@link IllegalArgumentException} is thrown (typically).
- * For example:
- *
+ * Assertion utility class that assists in validating arguments. Useful for identifying programmer errors early and
+ * clearly at runtime.
+ * 
+ * <p>
+ * For example, if the contract of a public method states it does not allow <code>null</code> arguments, Assert can be
+ * used to validate that contract. Doing this clearly indicates a contract violation when it occurs and protects the
+ * class's invariants.
+ * 
+ * <p>
+ * Typically used to validate method arguments rather than configuration properties, to check for cases that are usually
+ * programmer errors rather than configuration errors. In contrast to config initialization code, there is usally no
+ * point in falling back to defaults in such methods.
+ * 
+ * <p>
+ * This class is similar to JUnit's assertion library. If an argument value is deemed invalid, an
+ * {@link IllegalArgumentException} is thrown (typically). For example:
+ * 
  * <pre class="code">
- * Assert.notNull(clazz, "The class must not be null");
- * Assert.isTrue(i > 0, "The value must be greater than zero");</pre>
- *
- * Mainly for internal use within the framework; consider Jakarta's Commons Lang
- * >= 2.0 for a more comprehensive suite of assertion utilities.
- *
+ * Assert.notNull(clazz, &quot;The class must not be null&quot;);
+ * Assert.isTrue(i &gt; 0, &quot;The value must be greater than zero&quot;);
+ * </pre>
+ * 
+ * Mainly for internal use within the framework; consider Jakarta's Commons Lang >= 2.0 for a more comprehensive suite
+ * of assertion utilities.
+ * 
  * @author Keith Donald
  * @author Juergen Hoeller
  * @author Colin Sampaleanu
  * @author Rob Harrop
  * @since 1.1.2
  */
-public abstract class Assert {
+public class Assert {
 
 	/**
-	 * Assert a boolean expression, throwing <code>IllegalArgumentException</code>
-	 * if the test result is <code>false</code>.
-	 * <pre class="code">Assert.isTrue(i &gt; 0, "The value must be greater than zero");</pre>
+	 * Assert a boolean expression, throwing <code>IllegalArgumentException</code> if the test result is
+	 * <code>false</code>.
+	 * 
+	 * <pre class="code">
+	 * Assert.isTrue(i &gt; 0, &quot;The value must be greater than zero&quot;);
+	 * </pre>
 	 * @param expression a boolean expression
 	 * @param message the exception message to use if the assertion fails
 	 * @throws IllegalArgumentException if expression is <code>false</code>
@@ -72,9 +76,12 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Assert a boolean expression, throwing <code>IllegalArgumentException</code>
-	 * if the test result is <code>false</code>.
-	 * <pre class="code">Assert.isTrue(i &gt; 0);</pre>
+	 * Assert a boolean expression, throwing <code>IllegalArgumentException</code> if the test result is
+	 * <code>false</code>.
+	 * 
+	 * <pre class="code">
+	 * Assert.isTrue(i &gt; 0);
+	 * </pre>
 	 * @param expression a boolean expression
 	 * @throws IllegalArgumentException if expression is <code>false</code>
 	 */
@@ -84,7 +91,10 @@ public abstract class Assert {
 
 	/**
 	 * Assert that an object is <code>null</code> .
-	 * <pre class="code">Assert.isNull(value, "The value must be null");</pre>
+	 * 
+	 * <pre class="code">
+	 * Assert.isNull(value, &quot;The value must be null&quot;);
+	 * </pre>
 	 * @param object the object to check
 	 * @param message the exception message to use if the assertion fails
 	 * @throws IllegalArgumentException if the object is not <code>null</code>
@@ -97,7 +107,10 @@ public abstract class Assert {
 
 	/**
 	 * Assert that an object is <code>null</code> .
-	 * <pre class="code">Assert.isNull(value);</pre>
+	 * 
+	 * <pre class="code">
+	 * Assert.isNull(value);
+	 * </pre>
 	 * @param object the object to check
 	 * @throws IllegalArgumentException if the object is not <code>null</code>
 	 */
@@ -107,7 +120,10 @@ public abstract class Assert {
 
 	/**
 	 * Assert that an object is not <code>null</code> .
-	 * <pre class="code">Assert.notNull(clazz, "The class must not be null");</pre>
+	 * 
+	 * <pre class="code">
+	 * Assert.notNull(clazz, &quot;The class must not be null&quot;);
+	 * </pre>
 	 * @param object the object to check
 	 * @param message the exception message to use if the assertion fails
 	 * @throws IllegalArgumentException if the object is <code>null</code>
@@ -120,7 +136,10 @@ public abstract class Assert {
 
 	/**
 	 * Assert that an object is not <code>null</code> .
-	 * <pre class="code">Assert.notNull(clazz);</pre>
+	 * 
+	 * <pre class="code">
+	 * Assert.notNull(clazz);
+	 * </pre>
 	 * @param object the object to check
 	 * @throws IllegalArgumentException if the object is <code>null</code>
 	 */
@@ -129,9 +148,12 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Assert that the given String has valid text content; that is, it must not
-	 * be <code>null</code> and must contain at least one non-whitespace character.
-	 * <pre class="code">Assert.hasText(name, "'name' must not be empty");</pre>
+	 * Assert that the given String has valid text content; that is, it must not be <code>null</code> and must contain
+	 * at least one non-whitespace character.
+	 * 
+	 * <pre class="code">
+	 * Assert.hasText(name, &quot;'name' must not be empty&quot;);
+	 * </pre>
 	 * @param text the String to check
 	 * @param message the exception message to use if the assertion fails
 	 * @see StringUtil#hasText
@@ -143,9 +165,12 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Assert that the given String has valid text content; that is, it must not
-	 * be <code>null</code> and must contain at least one non-whitespace character.
-	 * <pre class="code">Assert.hasText(name, "'name' must not be empty");</pre>
+	 * Assert that the given String has valid text content; that is, it must not be <code>null</code> and must contain
+	 * at least one non-whitespace character.
+	 * 
+	 * <pre class="code">
+	 * Assert.hasText(name, &quot;'name' must not be empty&quot;);
+	 * </pre>
 	 * @param text the String to check
 	 * @see StringUtil#hasText
 	 */
@@ -154,9 +179,11 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Assert that an array has elements; that is, it must not be
-	 * <code>null</code> and must have at least one element.
-	 * <pre class="code">Assert.notEmpty(array, "The array must have elements");</pre>
+	 * Assert that an array has elements; that is, it must not be <code>null</code> and must have at least one element.
+	 * 
+	 * <pre class="code">
+	 * Assert.notEmpty(array, &quot;The array must have elements&quot;);
+	 * </pre>
 	 * @param array the array to check
 	 * @param message the exception message to use if the assertion fails
 	 * @throws IllegalArgumentException if the object array is <code>null</code> or has no elements
@@ -168,9 +195,11 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Assert that an array has elements; that is, it must not be
-	 * <code>null</code> and must have at least one element.
-	 * <pre class="code">Assert.notEmpty(array);</pre>
+	 * Assert that an array has elements; that is, it must not be <code>null</code> and must have at least one element.
+	 * 
+	 * <pre class="code">
+	 * Assert.notEmpty(array);
+	 * </pre>
 	 * @param array the array to check
 	 * @throws IllegalArgumentException if the object array is <code>null</code> or has no elements
 	 */
@@ -179,9 +208,11 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Assert that an array has no null elements.
-	 * Note: Does not complain if the array is empty!
-	 * <pre class="code">Assert.noNullElements(array, "The array must have non-null elements");</pre>
+	 * Assert that an array has no null elements. Note: Does not complain if the array is empty!
+	 * 
+	 * <pre class="code">
+	 * Assert.noNullElements(array, &quot;The array must have non-null elements&quot;);
+	 * </pre>
 	 * @param array the array to check
 	 * @param message the exception message to use if the assertion fails
 	 * @throws IllegalArgumentException if the object array contains a <code>null</code> element
@@ -197,9 +228,11 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Assert that an array has no null elements.
-	 * Note: Does not complain if the array is empty!
-	 * <pre class="code">Assert.noNullElements(array);</pre>
+	 * Assert that an array has no null elements. Note: Does not complain if the array is empty!
+	 * 
+	 * <pre class="code">
+	 * Assert.noNullElements(array);
+	 * </pre>
 	 * @param array the array to check
 	 * @throws IllegalArgumentException if the object array contains a <code>null</code> element
 	 */
@@ -208,9 +241,12 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Assert that a collection has elements; that is, it must not be
-	 * <code>null</code> and must have at least one element.
-	 * <pre class="code">Assert.notEmpty(collection, "Collection must have elements");</pre>
+	 * Assert that a collection has elements; that is, it must not be <code>null</code> and must have at least one
+	 * element.
+	 * 
+	 * <pre class="code">
+	 * Assert.notEmpty(collection, &quot;Collection must have elements&quot;);
+	 * </pre>
 	 * @param collection the collection to check
 	 * @param message the exception message to use if the assertion fails
 	 * @throws IllegalArgumentException if the collection is <code>null</code> or has no elements
@@ -222,9 +258,12 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Assert that a collection has elements; that is, it must not be
-	 * <code>null</code> and must have at least one element.
-	 * <pre class="code">Assert.notEmpty(collection, "Collection must have elements");</pre>
+	 * Assert that a collection has elements; that is, it must not be <code>null</code> and must have at least one
+	 * element.
+	 * 
+	 * <pre class="code">
+	 * Assert.notEmpty(collection, &quot;Collection must have elements&quot;);
+	 * </pre>
 	 * @param collection the collection to check
 	 * @throws IllegalArgumentException if the collection is <code>null</code> or has no elements
 	 */
@@ -234,9 +273,11 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Assert that a Map has entries; that is, it must not be <code>null</code>
-	 * and must have at least one entry.
-	 * <pre class="code">Assert.notEmpty(map, "Map must have entries");</pre>
+	 * Assert that a Map has entries; that is, it must not be <code>null</code> and must have at least one entry.
+	 * 
+	 * <pre class="code">
+	 * Assert.notEmpty(map, &quot;Map must have entries&quot;);
+	 * </pre>
 	 * @param map the map to check
 	 * @param message the exception message to use if the assertion fails
 	 * @throws IllegalArgumentException if the map is <code>null</code> or has no entries
@@ -248,9 +289,11 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Assert that a Map has entries; that is, it must not be <code>null</code>
-	 * and must have at least one entry.
-	 * <pre class="code">Assert.notEmpty(map);</pre>
+	 * Assert that a Map has entries; that is, it must not be <code>null</code> and must have at least one entry.
+	 * 
+	 * <pre class="code">
+	 * Assert.notEmpty(map);
+	 * </pre>
 	 * @param map the map to check
 	 * @throws IllegalArgumentException if the map is <code>null</code> or has no entries
 	 */
@@ -260,7 +303,10 @@ public abstract class Assert {
 
 	/**
 	 * Assert that the provided object is an instance of the provided class.
-	 * <pre class="code">Assert.instanceOf(Foo.class, foo);</pre>
+	 * 
+	 * <pre class="code">
+	 * Assert.instanceOf(Foo.class, foo);
+	 * </pre>
 	 * @param clazz the required class
 	 * @param obj the object to check
 	 * @throws IllegalArgumentException if the object is not an instance of clazz
@@ -272,13 +318,15 @@ public abstract class Assert {
 
 	/**
 	 * Assert that the provided object is an instance of the provided class.
-	 * <pre class="code">Assert.instanceOf(Foo.class, foo);</pre>
+	 * 
+	 * <pre class="code">
+	 * Assert.instanceOf(Foo.class, foo);
+	 * </pre>
 	 * @param type the type to check against
 	 * @param obj the object to check
-	 * @param message a message which will be prepended to the message produced by
-	 * the function itself, and which may be used to provide context. It should
-	 * normally end in a ": " or ". " so that the function generate message looks
-	 * ok when prepended to it.
+	 * @param message a message which will be prepended to the message produced by the function itself, and which may be
+	 *            used to provide context. It should normally end in a ": " or ". " so that the function generate
+	 *            message looks ok when prepended to it.
 	 * @throws IllegalArgumentException if the object is not an instance of clazz
 	 * @see Class#isInstance
 	 */
@@ -292,7 +340,10 @@ public abstract class Assert {
 
 	/**
 	 * Assert that <code>superType.isAssignableFrom(subType)</code> is <code>true</code>.
-	 * <pre class="code">Assert.isAssignable(Number.class, myClass);</pre>
+	 * 
+	 * <pre class="code">
+	 * Assert.isAssignable(Number.class, myClass);
+	 * </pre>
 	 * @param superType the super type to check
 	 * @param subType the sub type to check
 	 * @throws IllegalArgumentException if the classes are not assignable
@@ -303,13 +354,15 @@ public abstract class Assert {
 
 	/**
 	 * Assert that <code>superType.isAssignableFrom(subType)</code> is <code>true</code>.
-	 * <pre class="code">Assert.isAssignable(Number.class, myClass);</pre>
+	 * 
+	 * <pre class="code">
+	 * Assert.isAssignable(Number.class, myClass);
+	 * </pre>
 	 * @param superType the super type to check against
 	 * @param subType the sub type to check
-	 * @param message a message which will be prepended to the message produced by
-	 * the function itself, and which may be used to provide context. It should
-	 * normally end in a ": " or ". " so that the function generate message looks
-	 * ok when prepended to it.
+	 * @param message a message which will be prepended to the message produced by the function itself, and which may be
+	 *            used to provide context. It should normally end in a ": " or ". " so that the function generate
+	 *            message looks ok when prepended to it.
 	 * @throws IllegalArgumentException if the classes are not assignable
 	 */
 	public static void isAssignable(Class<?> superType, Class<?> subType, String message) {
@@ -320,10 +373,12 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Assert a boolean expression, throwing <code>IllegalStateException</code>
-	 * if the test result is <code>false</code>. Call isTrue if you wish to
-	 * throw IllegalArgumentException on an assertion failure.
-	 * <pre class="code">Assert.state(id == null, "The id property must not already be initialized");</pre>
+	 * Assert a boolean expression, throwing <code>IllegalStateException</code> if the test result is <code>false</code>
+	 * . Call isTrue if you wish to throw IllegalArgumentException on an assertion failure.
+	 * 
+	 * <pre class="code">
+	 * Assert.state(id == null, &quot;The id property must not already be initialized&quot;);
+	 * </pre>
 	 * @param expression a boolean expression
 	 * @param message the exception message to use if the assertion fails
 	 * @throws IllegalStateException if expression is <code>false</code>
@@ -335,11 +390,13 @@ public abstract class Assert {
 	}
 
 	/**
-	 * Assert a boolean expression, throwing {@link IllegalStateException}
-	 * if the test result is <code>false</code>.
-	 * <p>Call {@link #isTrue(boolean)} if you wish to
-	 * throw {@link IllegalArgumentException} on an assertion failure.
-	 * <pre class="code">Assert.state(id == null);</pre>
+	 * Assert a boolean expression, throwing {@link IllegalStateException} if the test result is <code>false</code>.
+	 * <p>
+	 * Call {@link #isTrue(boolean)} if you wish to throw {@link IllegalArgumentException} on an assertion failure.
+	 * 
+	 * <pre class="code">
+	 * Assert.state(id == null);
+	 * </pre>
 	 * @param expression a boolean expression
 	 * @throws IllegalStateException if the supplied expression is <code>false</code>
 	 */
