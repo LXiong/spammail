@@ -1,10 +1,10 @@
 package com.aimilin.parse;
 
 import java.io.IOException;
-import java.util.List;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.junit.Test;
+
+import com.aimilin.utils.TestUtils;
 
 /**
  * 文件解析测试类
@@ -18,16 +18,7 @@ public class CommentFileParseTest {
 		CommentFileParse parse = new CommentFileParse();
 		String path = CommentFileParseTest.class.getClassLoader().getResource("conf.properties").getPath();
 		System.out.println(path);
-		parse.parse(path);
-		print(parse.getLines());
-	}
-
-	private void print(List<String> strList) {
-		if (CollectionUtils.isEmpty(strList))
-			return;
-		for (String str : strList) {
-			System.out.println(str);
-		}
+		TestUtils.print(parse.parse(path));
 	}
 
 }

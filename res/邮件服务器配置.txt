@@ -1,0 +1,14 @@
+##########################################################################
+#说明: #开头的为注释，注释系统将不读取哪一行信息
+#    这个文件主要是帮助系统设置smtp服务用的，如果没有指定系统将使用默认的
+#    smtp服务及smtp.xxxx.xxx
+#
+##########################################################################
+
+#邮件类型      SMTP服务器(发信)       POP3服务器(收信)        IMAP服务器(收信)
+163.com        smtp.163.com           pop.163.com             imap.163.com
+yeah.net       smtp.yeah.net          pop.yeah.net            imap.yeah.net
+sohu.com       smtp.sohu.com          pop3.sogou.com          imap.sogou.com
+sina.cn        smtp.sina.cn           pop.sina.cn             imap.sina.cn
+gmail.com      smtp.gmail.com         pop.gmail.com           imap.gmail.com
+yahoo.cn       smtp.gmail.com

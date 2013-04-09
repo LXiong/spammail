@@ -1,0 +1,74 @@
+#说明：#开头的为注释，注释系统将不读取哪一行信息
+#    这个文件存放的是发送邮件的账户信息
+
+#  第一列账户                   第二列为密码
+javamailaaaa@163.com             java123456
+javamailbbbb@163.com             java123456
+javamailcccc@163.com             java123456
+javamaildddd@163.com             java123456
+javamaileeee@163.com             java123456
+javamailffff@163.com             java123456
+javamailgggg@163.com             java123456
+javamail1111@163.com             java123456
+javamail2222@163.com             java123456
+javamail3333@163.com             java123456
+javamail4444@163.com             java123456
+java2017@163.com                 java123456
+ljg2017@163.com                  java123456
+ljg2022@163.com                  java123456
+ljg3306@163.com                  java123456
+ljg8080@163.com                  java123456
+email22222@163.com               java123456
+email333333@163.com              java123456
+email5555555@163.com             java123456
+email6666666@163.com             java123456
+mail88855555@163.com             java123456
+
+javamail1111@yeah.net             java123456
+javamail2222@yeah.net             java123456
+javamail3333@yeah.net             java123456
+javamail4444@yeah.net             java123456
+javamail5555@yeah.net             java123456
+javamail6666@yeah.net             java123456
+javamail7777@yeah.net             java123456
+javamail8888@yeah.net             java123456
+javamail9999@yeah.net             java123456
+javamail0000@yeah.net             java123456
+spammail2222@yeah.net             java123456
+javamail1234@yeah.net             java123456
+javamail1235@yeah.net             java123456
+javamail234@yeah.net              java123456
+java2014@yeah.net                 java123456
+java2015@yeah.net                 java123456
+ljg1002@yeah.net                  java123456
+email444444@yeah.net              java123456
+
+javamail0000@126.com              java123456
+javamail1111@126.com              java123456
+javamail2222@126.com              java123456
+javamail3333@126.com              java123456
+javamail4444@126.com              java123456
+javamail5555@126.com              java123456
+javamail6666@126.com              java123456
+javamail7777@126.com              java123456
+javamail8888@126.com              java123456
+javamail9999@126.com              java123456
+
+javamail1111@sohu.com             java123456
+javamail2222@sohu.com             java123456
+javamail3333@sohu.com             java123456
+javamail4444@sohu.com             java123456
+javamail5555@sohu.com             java123456
+javamail6666@sohu.com             java123456
+javamail7777@sohu.com             java123456
+
+javamail1111@sina.cn              java123456
+javamail1111@gmail.com            java123456
+javamail2222@gmail.com            java123456
+
+javamail1111@yahoo.cn             java123456
+javamail2222@yahoo.cn             java123456
+javamail3333@yahoo.cn             java123456
+
+2531440131@qq.com                 java123456
+1759748342@qq.com                 java123456

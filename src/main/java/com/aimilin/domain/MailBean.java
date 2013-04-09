@@ -45,6 +45,11 @@ public class MailBean {
 	 */
 	private String to;
 
+	/**
+	 * @fields smtpHost 发送邮件服务器地址
+	 */
+	private String smtpHost;
+
 	public MailBean() {
 		super();
 	}
@@ -96,6 +101,26 @@ public class MailBean {
 		this.to = to;
 		this.subject = subject;
 		this.content = content;
+	}
+
+	/**
+	 * 发送邮件
+	 * @param userName 用户名
+	 * @param password 密码
+	 * @param toList 收件人列表
+	 * @param subject 主题
+	 * @param content 内容
+	 * @param smtpHost 发送邮件服务器地址
+	 */
+	public MailBean(String userName, String password, List<String> toList, String subject, String content,
+			String smtpHost) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.subject = subject;
+		this.toList = toList;
+		this.content = content;
+		this.smtpHost = smtpHost;
 	}
 
 	public String getUserName() {
@@ -194,4 +219,13 @@ public class MailBean {
 		}
 		return intAdds;
 	}
+
+	public String getSmtpHost() {
+		return smtpHost;
+	}
+
+	public void setSmtpHost(String smtpHost) {
+		this.smtpHost = smtpHost;
+	}
+
 }

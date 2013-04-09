@@ -27,11 +27,11 @@ public class ConfigUtils extends PropertiesConfiguration implements Configuratio
 			return conf;
 		}
 		try {
-			conf = new ConfigUtils(Constants.CONFIG_NAME);
+			conf = new ConfigUtils(Constants.CONFIG_SYSTEM);
 			if (log.isDebugEnabled())
-				log.debug(String.format("加载配置文件\"%s\"完成！", Constants.CONFIG_NAME));
+				log.debug(String.format("加载配置文件\"%s\"完成！", Constants.CONFIG_SYSTEM));
 		} catch (ConfigurationException e) {
-			log.error(String.format("加载配置文件\"%s\"失败！", Constants.CONFIG_NAME), e);
+			log.error(String.format("加载配置文件\"%s\"失败！", Constants.CONFIG_SYSTEM), e);
 		}
 		return conf;
 	}

@@ -19,8 +19,7 @@ public class EmailAccountParseTest {
 	public void testEmailAccountParse() throws IOException {
 		EmailAccountParse parse = new EmailAccountParse();
 		parse.setIgnoreErrorEmail(false);
-		parse.parse("D:\\workspace\\java\\spammail\\文档\\发件人.txt");
-		List<EmailAccount> accountList = parse.getEmailAccountList();
+		List<EmailAccount> accountList = parse.parse("res/发件人.txt");
 		TestUtils.print(accountList);
 	}
 
