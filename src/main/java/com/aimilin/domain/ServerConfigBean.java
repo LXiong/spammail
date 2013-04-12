@@ -2,6 +2,9 @@ package com.aimilin.domain;
 
 import java.io.Serializable;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 /**
  * 邮件服务器配置bean类
  * @author LiuJunGuang
@@ -137,8 +140,7 @@ public class ServerConfigBean implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ServerConfigBean [domain=" + domain + ", smtp=" + smtp + ", imap=" + imap + ", pop=" + pop
-				+ ", maxRecipient=" + maxRecipient + ", interval=" + interval + "]";
+		return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
 	}
 
 }

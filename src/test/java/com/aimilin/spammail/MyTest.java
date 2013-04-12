@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import com.aimilin.utils.ConfigUtils;
 
-
 /**
  * 简单的测试类
  * @author LiuJunGuang
