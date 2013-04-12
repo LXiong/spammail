@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.JToolBar;
-import javax.swing.text.html.HTMLDocument;
+import javax.swing.text.StyledDocument;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -128,12 +128,12 @@ public class ContentPanel extends BasePanel implements Serializable {
 		contentTp.setContentType("text/html; charset=UTF-8");
 		contentTp.setCaretPosition(0);
 		contentTp.setMargin(new Insets(5, 5, 5, 5));
-		HTMLDocument htmlDoc = new HTMLDocument();
-		htmlDoc.addUndoableEditListener(popupMenu);
-		htmlDoc.addDocumentListener(new MyDocumentListener());
-		contentTp.setStyledDocument(htmlDoc);
 		contentTp.addCaretListener(caretListenerLabel);
 		contentTp.addMouseListener(popupMenu);
+		StyledDocument doc = contentTp.getStyledDocument();
+		doc.addUndoableEditListener(popupMenu);
+		doc.addDocumentListener(new MyDocumentListener());
+
 		JScrollPane scrollPane = new JScrollPane(contentTp);
 		scrollPane.setPreferredSize(new Dimension(400, 400));
 		toolBarBean.setContentTp(contentTp);

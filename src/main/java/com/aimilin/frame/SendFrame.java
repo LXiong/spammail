@@ -37,6 +37,8 @@ public class SendFrame extends JPanel {
 		// 初始化状态栏Panel
 		JPanel statePanel = initStatePanel();
 		this.add(statePanel, BorderLayout.SOUTH);
+		this.setVisible(true);
+		this.validate();
 	}
 
 	/**

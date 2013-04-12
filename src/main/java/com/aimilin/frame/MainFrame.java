@@ -1,6 +1,5 @@
 package com.aimilin.frame;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -8,16 +7,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
 import org.apache.log4j.Logger;
 
 import com.aimilin.utils.ConfigUtils;
+import com.aimilin.utils.FrameFactory;
 import com.aimilin.utils.ImageUtils;
 
 /**
@@ -33,11 +33,11 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	public MainFrame() {
 		super(conf.getString("window.title", "邮件群发"));
-		jFrameValidate();// 初始化界面
 		JMenuBar menuBar = new JMenuBar();
 		this.setJMenuBar(menuBar);
 		initFileMenu(menuBar);
 		initSetMenu(menuBar);
+		jFrameValidate();// 初始化界面
 		setVisible(true);
 	}
 
@@ -48,8 +48,8 @@ public class MainFrame extends JFrame implements ActionListener {
 		int width = conf.getInt("window.width", 800);
 		int height = conf.getInt("window.height", 500);
 		this.setBounds((dim.width - width) / 2, (dim.height - height) / 2, width, height);
-		validate();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.validate();
 	}
 
 	// 初始化文件菜单
@@ -114,8 +114,8 @@ public class MainFrame extends JFrame implements ActionListener {
 	}
 
 	// 添加子窗体的方法
-	public void addIFame(JPanel panel) {
-		this.add(panel, BorderLayout.CENTER);
+	public void addIFame(JComponent panel) {
+		this.setContentPane(panel);
 		this.validate();
 	}
 
@@ -124,7 +124,8 @@ public class MainFrame extends JFrame implements ActionListener {
 		if (e.getSource() == exitMI) {// 退出系统
 			System.exit(0);
 		} else if (e.getSource() == sendMailMI) {// 发送邮件
-			log.debug("发送邮件");
+			log.debug("初始化发送邮件界面！");
+			this.add(FrameFactory.getInstance().getSendMailUI());
 		} else if (e.getSource() == sysSetMI) {// 系统设置
 			log.debug("系统设置");
 		} else if (e.getSource() == mailSetMI) {// 邮件设置
