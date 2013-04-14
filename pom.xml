@@ -75,7 +75,7 @@
   </properties>
   
   <build>
-		<finalName>MDITIP</finalName>
+		<finalName>spamMail</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
