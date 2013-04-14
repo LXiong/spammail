@@ -40,7 +40,7 @@ public class FunctionPanel {
 
 		// 创建文本框box
 		Box boxH2 = Box.createHorizontalBox();
-		JLabel subjectLabel = new JLabel(conf.getString("sendFrame.lable.subject", "主    题:"));
+		JLabel subjectLabel = new JLabel(conf.getString("sendFrame.label.subject", "主题:"));
 		subjectLabel.setPreferredSize(new Dimension(50, 25));
 		boxH2.add(subjectLabel);
 		boxH2.add(Box.createHorizontalStrut(10));
