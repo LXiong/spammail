@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
+import com.aimilin.action.ToolBarEvent;
 import com.aimilin.frame.panel.ContentPanel;
 import com.aimilin.frame.panel.FunctionPanel;
 import com.aimilin.frame.panel.ToolBarPanel;
@@ -18,16 +19,14 @@ import com.aimilin.frame.panel.ToolBarPanel;
  */
 public class SendFrame extends JPanel {
 	private static final long serialVersionUID = 594927382035366078L;
-
 	private FunctionPanel functionPanel = null;// 发送邮件收件人界面
 	private ContentPanel contentPanel = null;// 发送邮件主界面类(邮件编辑界面)
 	private ToolBarPanel toolBarPanel = null;// 工具条面板
+	private ToolBarEvent toolBarEvent = null;// 工具条事件处理类
 
 	public SendFrame() {
 		super();
-		functionPanel = new FunctionPanel();
-		contentPanel = new ContentPanel();
-		toolBarPanel = new ToolBarPanel();
+		initPanelObject();// 初始化各个面板对象
 		this.setLayout(new BorderLayout());
 		// 初始化工具条类
 		this.add(toolBarPanel.initToolBar(), BorderLayout.NORTH);
@@ -39,6 +38,22 @@ public class SendFrame extends JPanel {
 		this.add(statePanel, BorderLayout.SOUTH);
 		this.setVisible(true);
 		this.validate();
+	}
+
+	/**
+	 * 初始化各个面板对象
+	 * @author LiuJunGuang
+	 * @date 2013-4-14下午10:43:31
+	 */
+	private void initPanelObject() {
+		toolBarEvent = new ToolBarEvent();
+		contentPanel = new ContentPanel();
+		functionPanel = new FunctionPanel();
+		toolBarPanel = new ToolBarPanel();
+		toolBarPanel.setActionListener(toolBarEvent);
+		toolBarEvent.setContentPanel(contentPanel);
+		toolBarEvent.setToolBarPanel(toolBarPanel);
+		toolBarEvent.setFunctionPanel(functionPanel);
 	}
 
 	/**
@@ -72,6 +87,7 @@ public class SendFrame extends JPanel {
 		return statusPanel;
 	}
 
+	// 测试窗口
 	public static void main(String[] args) {
 		JFrame f = new JFrame();
 		f.add(new SendFrame());

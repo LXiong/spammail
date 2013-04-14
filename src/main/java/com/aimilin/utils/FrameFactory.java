@@ -40,7 +40,7 @@ public class FrameFactory {
 	 * @return JComponent
 	 * @date 2013-4-11下午9:27:13
 	 */
-	public synchronized JComponent getSendMailUI() {
+	public JComponent getSendMailUI() {
 		if (sendFrame == null) {
 			sendFrame = new SendFrame();
 		}

@@ -30,27 +30,29 @@ public class FunctionPanel {
 	// 初始化收件人Box
 	private Box intiBox() {
 		// 创建标签box
-		Box boxV1 = Box.createVerticalBox();
+		Box boxH1 = Box.createHorizontalBox();
 		JLabel toLabel = new JLabel(conf.getString("sendFrame.lable.to", "收件人:"));
-		boxV1.add(toLabel);
-		boxV1.add(Box.createVerticalStrut(10));
-		JLabel subjectLabel = new JLabel(conf.getString("sendFrame.lable.subject", "主题:"));
-		boxV1.add(subjectLabel);
+		toLabel.setPreferredSize(new Dimension(50, 25));
+		boxH1.add(toLabel);
+		boxH1.add(Box.createHorizontalStrut(10));
+		toTf = createTextField();
+		boxH1.add(toTf);
 
 		// 创建文本框box
-		Box boxV2 = Box.createVerticalBox();
-		toTf = createTextField();
-		boxV2.add(toTf);
-		boxV2.add(Box.createVerticalStrut(8));
+		Box boxH2 = Box.createHorizontalBox();
+		JLabel subjectLabel = new JLabel(conf.getString("sendFrame.lable.subject", "主    题:"));
+		subjectLabel.setPreferredSize(new Dimension(50, 25));
+		boxH2.add(subjectLabel);
+		boxH2.add(Box.createHorizontalStrut(10));
 		subjectTf = createTextField();
-		boxV2.add(subjectTf);
+		boxH2.add(subjectTf);
 
 		// 创建基本box
-		Box baseBox = Box.createHorizontalBox();
-		baseBox.add(boxV1);
-		baseBox.add(Box.createHorizontalStrut(20));
-		baseBox.add(boxV2);
-		boxV2.add(Box.createVerticalStrut(8));
+		Box baseBox = Box.createVerticalBox();
+		baseBox.add(boxH1);
+		baseBox.add(Box.createVerticalStrut(8));
+		baseBox.add(boxH2);
+		baseBox.add(Box.createVerticalStrut(8));
 		return baseBox;
 	}
 

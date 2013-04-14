@@ -1,5 +1,6 @@
 package com.aimilin.frame;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -38,7 +39,6 @@ public class MainFrame extends JFrame implements ActionListener {
 		initFileMenu(menuBar);
 		initSetMenu(menuBar);
 		jFrameValidate();// 初始化界面
-		setVisible(true);
 	}
 
 	// 初始化界面配置
@@ -114,9 +114,10 @@ public class MainFrame extends JFrame implements ActionListener {
 	}
 
 	// 添加子窗体的方法
-	public void addIFame(JComponent panel) {
-		this.setContentPane(panel);
+	public void addCompoent(JComponent panel) {
+		this.add(panel, BorderLayout.CENTER);
 		this.validate();
+		this.repaint();
 	}
 
 	@Override
@@ -124,8 +125,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		if (e.getSource() == exitMI) {// 退出系统
 			System.exit(0);
 		} else if (e.getSource() == sendMailMI) {// 发送邮件
-			log.debug("初始化发送邮件界面！");
-			this.add(FrameFactory.getInstance().getSendMailUI());
+			this.addCompoent(FrameFactory.getInstance().getSendMailUI());
 		} else if (e.getSource() == sysSetMI) {// 系统设置
 			log.debug("系统设置");
 		} else if (e.getSource() == mailSetMI) {// 邮件设置

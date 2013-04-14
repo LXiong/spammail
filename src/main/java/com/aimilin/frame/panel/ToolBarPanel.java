@@ -1,6 +1,5 @@
 package com.aimilin.frame.panel;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -17,9 +16,10 @@ import com.aimilin.utils.FrameUtils;
  * @author LiuJunGuang
  * @date 2013-4-2下午10:55:49
  */
-public class ToolBarPanel extends BasePanel implements ActionListener {
+public class ToolBarPanel extends BasePanel {
 	private ConfigUtils conf = ConfigUtils.getInstance();
-	private ToolBarBean toolBarBean;
+	private ToolBarBean toolBarBean;// 工具条对象信息封装
+	private ActionListener actionListener;// 事件处理
 
 	public ToolBarPanel() {
 		super();
@@ -48,20 +48,33 @@ public class ToolBarPanel extends BasePanel implements ActionListener {
 	public JButton createButton(String name, String iconName) {
 		boolean showText = conf.getBoolean("window.toolbar.show_text", true);
 		boolean showIcon = conf.getBoolean("window.toolbar.show_icon", true) && StringUtils.isNotEmpty(iconName);
-		return FrameUtils.createButton(name, showText, iconName, showIcon, this);
+		return FrameUtils.createButton(name, showText, iconName, showIcon, actionListener);
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-
-	}
-
+	/**
+	 * 获取工具条bean对象
+	 * @author LiuJunGuang
+	 * @return ToolBarBean
+	 * @date 2013-4-14下午10:39:45
+	 */
 	public ToolBarBean getToolBarBean() {
 		return toolBarBean;
 	}
 
-	public void setToolBarBean(ToolBarBean toolBarBean) {
-		this.toolBarBean = toolBarBean;
+	/**
+	 * 获取工具条事件处理类
+	 * @return actionListener
+	 */
+	public ActionListener getActionListener() {
+		return actionListener;
+	}
+
+	/**
+	 * 设置工具条事件处理类
+	 * @param actionListener
+	 */
+	public void setActionListener(ActionListener actionListener) {
+		this.actionListener = actionListener;
 	}
 
 }
