@@ -20,6 +20,11 @@
 		 <appender-ref ref="CONSOLE"/>
 		 <appender-ref ref="FILE"/>
  </logger>
+ <logger name="org.apache.commons" additivity="false">
+		<level value="info" />
+		 <appender-ref ref="CONSOLE"/>
+		 <appender-ref ref="FILE"/>
+ </logger>
   <root>
     <priority  value="debug" />
    		<appender-ref ref="CONSOLE"/>
