@@ -36,8 +36,8 @@ public class ToolBarPanel extends BasePanel {
 		String[][] buttonArray = { { "sendBt", "sendFrame.button.send", "发送", "send_email.png" }, { this.SEPARATOR },
 				{ "saveBt", "sendFrame.button.save", "保存", "save.png" },
 				{ "importBt", "sendFrame.button.import", "导入", "import.png" }, { this.SEPARATOR },
-				{ "copyToBt", "sendFrame.button.copyTo", "添加抄送", "user.png" },
-				{ "secretToBt", "sendFrame.button.secretTo", "添加密送", "user_red.png" }, { this.SEPARATOR },
+				{ "copyToBt", "sendFrame.button.copyTo", "添加抄送人", "user.png" },
+				{ "secretToBt", "sendFrame.button.secretTo", "添加密送人", "user_red.png" }, { this.SEPARATOR },
 				{ "attachBt", "sendFrame.button.attach", "添加附件", "attach.png" }, };
 		this.initButton(toolBarBean, toolBar, buttonArray);
 		return toolBar;

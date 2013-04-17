@@ -1,6 +1,7 @@
 package com.aimilin.frame.panel;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Insets;
@@ -45,7 +46,7 @@ public class ContentPanel extends BasePanel implements Serializable {
 	}
 
 	// 初始化编辑面板
-	public JPanel initContentPanel() {
+	public Component initContentPanel() {
 		JPanel editPanel = new JPanel(new BorderLayout());
 		JPanel editorToolBarPanel = createEditToolBarPanel();
 		editPanel.add(editorToolBarPanel, BorderLayout.NORTH);
