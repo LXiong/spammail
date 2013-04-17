@@ -47,9 +47,8 @@ public class FunctionPanel {
 	public Component initFunctionPanel() {
 		panel = new JPanel(new BorderLayout());
 		panel.add(intiBox(), BorderLayout.CENTER);
-		panel.setAutoscrolls(true);
 		JScrollPane scrollPane = new JScrollPane(panel);
-		scrollPane.setPreferredSize(new Dimension(400, 70));
+		scrollPane.setMinimumSize(new Dimension(400, 73));
 		return scrollPane;
 	}
 
@@ -75,10 +74,11 @@ public class FunctionPanel {
 
 		// 创建基本box
 		baseBox = Box.createVerticalBox();
+		baseBox.add(Box.createVerticalStrut(5));
 		baseBox.add(boxH1);
-		baseBox.add(Box.createVerticalStrut(8));
+		baseBox.add(Box.createVerticalStrut(5));
 		baseBox.add(boxH2);
-		baseBox.add(Box.createVerticalStrut(8));
+		baseBox.add(Box.createVerticalStrut(5));
 		return baseBox;
 	}
 
@@ -153,7 +153,7 @@ public class FunctionPanel {
 		ccH.add(ccLabel);
 		ccH.add(Box.createHorizontalStrut(10));
 		ccH.add(tf);
-		Component com = Box.createVerticalStrut(8);
+		Component com = Box.createVerticalStrut(5);
 		baseBox.add(ccH, baseBox.getComponentCount() - 2);
 		baseBox.add(com, baseBox.getComponentCount() - 2);
 		boxMap.put(Integer.valueOf(addressType), new MyBox(ccH, com));
