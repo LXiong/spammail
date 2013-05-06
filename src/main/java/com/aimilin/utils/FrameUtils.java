@@ -6,6 +6,7 @@ import java.io.File;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.apache.log4j.Logger;
@@ -33,10 +34,8 @@ public class FrameUtils {
 	 * @return path 文件的全路径
 	 * @date 2012-11-18下午6:03:08
 	 */
-	public static String selectFile() {
+	public static String selectFile(FileFilter filter) {
 		JFileChooser chooser = new JFileChooser();// 构造一个当前路径的文件选择器
-		FileNameExtensionFilter filter = new FileNameExtensionFilter(conf.getString("file.filter.message", "选择文件"),
-				conf.getStringArray("file.filter"));
 		chooser.setFileFilter(filter);
 		if (chooser.showOpenDialog(SpamMail.mainFrame) == JFileChooser.APPROVE_OPTION) {// 如果选择确定键
 			File file = chooser.getSelectedFile();
@@ -45,6 +44,18 @@ public class FrameUtils {
 			return path;
 		}
 		return null;
+	}
+
+	/**
+	 * 弹出窗口选择文件，并返回文件的路径，如果没有选中则返回null，默认可选择配置文件中“file.filter”指定后缀的文件
+	 * @author LiuJunGuang
+	 * @return 文件的全路径
+	 * @date 2013-5-6下午9:53:49
+	 */
+	public static String selectDefaultFile() {
+		FileNameExtensionFilter filter = new FileNameExtensionFilter(conf.getString("file.filter.message", "TXT文件"),
+				conf.getStringArray("file.filter"));
+		return selectFile(filter);
 	}
 
 	/**

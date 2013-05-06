@@ -8,6 +8,7 @@ import com.aimilin.frame.panel.ContentPanel;
 import com.aimilin.frame.panel.FunctionPanel;
 import com.aimilin.frame.panel.ToolBarPanel;
 import com.aimilin.utils.ConfigUtils;
+import com.aimilin.utils.FrameUtils;
 
 /**
  * 工具条事件类处理
@@ -28,6 +29,9 @@ public class ToolBarEvent implements ActionListener {
 			addCcAction();// 添加抄送人
 		} else if (e.getSource() == toolBarBean.getSecretToBt()) {
 			addBccAction();// 添加密送人
+		} else if (e.getSource() == toolBarBean.getAttachBt()) {// 添加附件
+			String filePath = FrameUtils.selectDefaultFile();
+			FrameUtils.showMessage("文件路径是：" + filePath);
 		}
 	}
 
