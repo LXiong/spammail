@@ -26,7 +26,7 @@ public class SendMailUtils {
 	private boolean isDebug = conf.getBoolean("email.isDebug", true);
 	private int port = conf.getInt("email.port", 465);
 	private boolean isSSL = conf.getBoolean("email.isSSL", true);
-	private String charset = conf.getString("email.cherset", "UTF-8");
+	private String charset = conf.getString("email.charset", "UTF-8");
 
 	private HtmlEmail email = null;
 

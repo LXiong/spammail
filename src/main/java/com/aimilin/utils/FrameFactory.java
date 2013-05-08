@@ -2,6 +2,7 @@ package com.aimilin.utils;
 
 import javax.swing.JComponent;
 
+import com.aimilin.frame.MailConfigFrame;
 import com.aimilin.frame.SendFrame;
 
 /**
@@ -45,6 +46,16 @@ public class FrameFactory {
 			sendFrame = new SendFrame();
 		}
 		return sendFrame;
+	}
+
+	/**
+	 * 获取邮件配置界面
+	 * @author LiuJunGuang
+	 * @return JComponent
+	 * @date 2013-5-8下午9:15:16
+	 */
+	public JComponent getMailConfigUI() {
+		return new MailConfigFrame();
 	}
 
 }

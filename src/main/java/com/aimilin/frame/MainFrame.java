@@ -31,6 +31,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	private static Logger log = Logger.getLogger(MainFrame.class);
 	private static ConfigUtils conf = ConfigUtils.getInstance();
 	private JMenuItem exitMI, sendMailMI, sysSetMI, mailSetMI, useHelpMI, aboutMI;
+	private JComponent centerPanel = null;
 
 	public MainFrame() {
 		super(conf.getString("window.title", "邮件群发"));
@@ -115,7 +116,11 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	// 添加子窗体的方法
 	public void addCompoent(JComponent panel) {
+		if (null != centerPanel) {
+			this.remove(centerPanel);
+		}
 		this.add(panel, BorderLayout.CENTER);
+		this.centerPanel = panel;
 		this.validate();
 		this.repaint();
 	}
@@ -129,7 +134,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		} else if (e.getSource() == sysSetMI) {// 系统设置
 			log.debug("系统设置");
 		} else if (e.getSource() == mailSetMI) {// 邮件设置
-			log.debug("邮件设置");
+			this.addCompoent(FrameFactory.getInstance().getMailConfigUI());
 		} else if (e.getSource() == useHelpMI) {// 使用帮助
 			log.debug("使用帮助");
 		} else if (e.getSource() == aboutMI) {// 关于

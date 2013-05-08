@@ -3,18 +3,23 @@ package com.aimilin.frame.panel;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.Box;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import org.apache.commons.lang3.BooleanUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import com.aimilin.utils.ConfigUtils;
+import com.aimilin.utils.FrameUtils;
 
 /**
  * 收件人主题等功能面板
@@ -46,14 +51,14 @@ public class FunctionPanel {
 	// 初始化联系人Panel
 	public Component initFunctionPanel() {
 		panel = new JPanel(new BorderLayout());
-		panel.add(intiBox(), BorderLayout.CENTER);
+		panel.add(initBox(), BorderLayout.CENTER);
 		JScrollPane scrollPane = new JScrollPane(panel);
 		scrollPane.setMinimumSize(new Dimension(400, 73));
 		return scrollPane;
 	}
 
 	// 初始化收件人Box
-	private Box intiBox() {
+	private Box initBox() {
 		// 创建收件人
 		Box boxH1 = Box.createHorizontalBox();
 		JLabel toLabel = new JLabel(conf.getString("sendFrame.label.to", "收件人:"));
@@ -62,6 +67,7 @@ public class FunctionPanel {
 		boxH1.add(Box.createHorizontalStrut(10));
 		toTf = createTextField();
 		boxH1.add(toTf);
+		boxH1.add(createFileButton());
 
 		// 创建主题
 		Box boxH2 = Box.createHorizontalBox();
@@ -80,6 +86,26 @@ public class FunctionPanel {
 		baseBox.add(boxH2);
 		baseBox.add(Box.createVerticalStrut(5));
 		return baseBox;
+	}
+
+	/**
+	 * 收件人文件信息选择
+	 * @author LiuJunGuang
+	 * @return JButton
+	 * @date 2013-5-8下午8:34:33
+	 */
+	private Component createFileButton() {
+		JButton fileButton = new JButton(conf.getString("sendFrame.button.selectFile", "浏览..."));
+		fileButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String filePath = FrameUtils.selectDefaultFile();
+				if (StringUtils.isNotBlank(filePath)) {
+					toTf.setText(filePath);
+				}
+			}
+		});
+		return fileButton;
 	}
 
 	/**
